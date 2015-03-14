@@ -1,6 +1,32 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
-# before_filter :configure_account_update_params, only: [:update]
+ # before_filter :configure_sign_up_params
+ # before_filter :configure_account_update_params, only: [:update]
+
+  before_filter :configure_permitted_parameters
+
+  protected
+
+  # my custom fields are :name, :heard_how
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:firstname, :lastname,
+               :email, :password, :password_confirmation)
+    end
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:firstname, :lastname,
+               :email, :password, :password_confirmation, :current_password)
+    end
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:firstname, :lastname, :email, :password, :password_confirmation, :current_password)
+  end
+
+  public
 
   # GET /resource/sign_up
   # def new
@@ -8,9 +34,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+   def create
+
+     super
+   end
 
   # GET /resource/edit
   # def edit
@@ -18,9 +45,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+    super
+   end
 
   # DELETE /resource
   # def destroy
@@ -40,13 +67,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+   #  params.permit(:user[:firstname],:user[:lastname])
+  #   devise_parameter_sanitizer.for(:sign_up).push(:firstname, :lastname)
+ #  end
 
   # You can put the params you want to permit in the empty array.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.for(:account_update) << :attribute
-  # end
+   #  devise_parameter_sanitizer.for(:account_update).push(:firstname, :lastname)
+ #  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

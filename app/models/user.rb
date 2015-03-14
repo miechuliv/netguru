@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-
+  before_save :default_values
+  has_many :reviews
+  has_many :products
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -24,6 +26,12 @@ class User < ActiveRecord::Base
 
   end
 
-  has_many :reviews
-  has_many :products
+
+
+
+  def default_values
+    self.role ||= 'employee'
+  end
+
+
 end
