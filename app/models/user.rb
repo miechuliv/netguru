@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :lastname
 
   def admin?
+
     if self.role == 'admin'
 
          true

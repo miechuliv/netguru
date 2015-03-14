@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :description
   validates_presence_of :price
+
   validates_format_of :price, :with => /\A\d+\.*\d{0,2}\z/
 
   #validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }

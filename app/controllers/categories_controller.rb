@@ -6,11 +6,15 @@ class CategoriesController < ApplicationController
   expose(:category)
   expose(:product) { Product.new }
 
+  private
+
   def is_admin
-    unless current_user.admin?
-      redirect_to new_user_session_path
-    end
+    #puts YAML::dump(current_user.admin?)
+    redirect_to new_user_session_path unless current_user.admin?
+
   end
+
+  public
 
   def index
   end
