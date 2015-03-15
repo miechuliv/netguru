@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  before_save :default_values
+  #before_save :default_values
   has_many :reviews
   has_many :products
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   def admin?
 
-    if self.role == 'admin'
+    if read_attribute(:role) == 'admin'
 
          true
     else
@@ -30,9 +30,12 @@ class User < ActiveRecord::Base
 
 
 
-  def default_values
-    self.role ||= 'employee'
-  end
+  #def default_values
+  #  if read_attribute(:role).nil?
+  #    write_attribute(:role, 'employee')
+  #  end
+
+  #end
 
 
 end
