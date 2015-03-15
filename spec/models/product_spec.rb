@@ -17,10 +17,13 @@ describe Product do
     describe '#average_rating' do
       let(:user)    { create(:user) }
       let(:product) { create(:product) }
-      let(:review1) { create(:review, rating: 2, user: user) }
-      let(:review2) { create(:review, rating: 3, user: user) }
+      # I was getting "User blank error", I had to pass user_id attribute
+      let(:review1) { create(:review, rating: 2, user: user, user_id: user.id) }
+      let(:review2) { create(:review, rating: 3, user: user, user_id: user.id) }
 
       before do
+
+
         product.reviews << [review1, review2]
       end
 
