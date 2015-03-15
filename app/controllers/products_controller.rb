@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 
   def check_if_is_owner
 
-    if current_user != self.product.user
+    if !current_user.nil? && current_user != self.product.user
       redirect_to category_product_url(category, product),  :flash => { :error => 'You are not allowed to edit this product.' }
     end
 
