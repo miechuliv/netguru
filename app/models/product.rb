@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
 
-  attr_accessor :title , :description , :price
+
   validates_presence_of :title
   validates_presence_of :description
   validates_presence_of :price

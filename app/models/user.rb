@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-
-  attr_accessor :firstname , :lastname, :role
-
   validates_presence_of :firstname
   validates_presence_of :lastname
 
