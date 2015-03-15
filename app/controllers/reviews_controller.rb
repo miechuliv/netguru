@@ -5,17 +5,25 @@ class ReviewsController < ApplicationController
 
 
 
+
+
+
   def edit
   end
 
   def create
     self.review = Review.new(review_params)
+    #add user to review
+    review.user = current_user
 
     if review.save
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      render action: 'new'
+      # I believe ther should be a redirect back to product on failure to add review
+       redirect_to category_product_url(product.category, product), notice: 'Failed to save review.'
+
+      #render action: 'new'
     end
   end
 
