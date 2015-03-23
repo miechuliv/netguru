@@ -1,5 +1,9 @@
-%h1 New category
+.container.cat-form-div
 
-= render 'form'
+  %h1 New category
 
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  = render 'form'
+
+  .row.add-buttons
+    .cold-md-12
+      = link_to 'Back', categories_path, class: 'btn btn-primary'

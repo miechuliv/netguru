@@ -12,14 +12,18 @@
     %nav.navbar.navbar-default
       .container-fluid.head
         .row
-          .navbar-header.text-center
-            %span.navbar-brand #{AppConfig.workshops_name}
-          %p.navbar-text.navbar-right
-            - if current_user.nil?
-              = link_to "Sign in", new_user_session_path
-              = link_to "Sign up", new_user_registration_path
-            -else
-              = link_to "Sign out", destroy_user_session_path, :method => :delete
+          .col-md-8.col-md-offset-2.text-center
+            %span.lead #{AppConfig.workshops_name}
+          .col-md-2.text-center
+            .row
+              - if current_user.nil?
+                .col-md-6
+                  %span.lead.red-hover=  link_to "Sign in", new_user_session_path
+                .col-md-6
+                  %span.lead.red-hover=  link_to "Sign up", new_user_registration_path
+              - else
+                .col-md-12
+                  %span.lead.red-hover= link_to "Sign out", destroy_user_session_path, :method => :delete
 
     .container-fluid
       .row

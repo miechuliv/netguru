@@ -3,4 +3,83 @@
 .head {
   background-color: black;
   color: white;
+  padding: 10px;
 }
+
+.bottom-aligned {
+  display: table-cell;
+  vertical-align: bottom;
+  float: none;
+}
+.red-hover a{
+  text-decoration: none;
+  color:#42CA4E;
+}
+.red-hover a:hover {
+  color:#9387E0;
+
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: lightgreen;
+}
+
+@mixin border-radius($radius){
+
+  @include border-top-radius($radius);
+  @include border-right-radius($radius);
+  @include border-bottom-radius($radius);
+  @include border-left-radius($radius);
+}
+
+$standard-border: solid 1px $gray-lighter;
+
+.cat-form-div {
+  border:$standard-border;
+  @include border-radius( 5px );
+}
+
+.add-buttons {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+
+.error-msg {
+  color: $brand-danger;
+}
+
+.bottom-separation {
+  border-bottom:$standard-border;
+}
+
+.mrg-top {
+  margin-top: 10px;
+}
+/* columns of same height styles */
+/*.row-same-height {
+  display: table;
+  width: 100%;
+}
+.col-xs-height {
+  display: table-cell;
+  float: none !important;
+}*/
+
+
+
+/* firefox fix */
+/*.img-responsive {
+  width: 100%;
+}*/
+
+/* vertical alignment styles */
+/*.col-top {
+  vertical-align:top;
+}
+.col-middle {
+  vertical-align:middle;
+}
+.col-bottom {
+  vertical-align:bottom;
+}*/

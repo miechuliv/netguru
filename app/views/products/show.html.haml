@@ -1,26 +1,28 @@
-%p#notice= notice
-%p#error= flash[:error]
+.container.cat-form-div
+  %p#notice= notice
+  %p#error= flash[:error]
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+  %table.table
+    %tr
+      %td.col-md-1.lead.text-right.text-primary Title:
+      %td.col-md-11.text-center= product.title
+    %tr
+      %td.col-md-1.lead.text-right.text-primary Description:
+      %td.col-md-11.text-center= product.description
+    %tr
+      %td.col-md-1.lead.text-right.text-primary Price:
+      %td.col-md-11.text-center= product.price
 
-%p
-  %b Category
-  = product.category.name
+    %tr
+      %td.col-md-1.lead.text-right.text-primary Category
+      %td.col-md-11.text-center= product.category.name
 
-%h3 Reviews
-= render 'reviews/form'
+  %h3 Reviews
+  = render 'reviews/form'
 
-= render reviews
+  = render reviews
 
-- if !current_user.nil? && current_user == product.user
-  = link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+  - if !current_user.nil? && current_user == product.user
+    = link_to 'Edit', edit_category_product_path(category.id, product.id)
+  \|
+  = link_to 'Back', category_products_path, class: 'btn btn-primary'

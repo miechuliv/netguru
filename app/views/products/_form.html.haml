@@ -4,16 +4,16 @@
       %h2= "#{pluralize(product.errors.count, "error")} prohibited this product from being saved:"
       %ul
         - product.errors.full_messages.each do |msg|
-          %li= msg
+          %li.text-danger= msg
 
-  .form-group
+  .form-group{:class => ("has-error" unless product.errors[:title].blank?)}
     = f.label :title
     = f.text_field :title, class: 'form-control'
-  .form-group
+  .form-groupp{:class => ("has-error" unless product.errors[:description].blank?)}
     = f.label :description
     = f.text_area :description, class: 'form-control'
-  .form-group
+  .form-groupp{:class => ("has-error" unless product.errors[:price].blank?)}
     = f.label :price
     = f.text_field :price, class: 'form-control'
 
-  = f.submit 'Save', class: 'btn btn-default'
+  = f.submit 'Save', class: 'btn btn-default btn-lg mrg-top'

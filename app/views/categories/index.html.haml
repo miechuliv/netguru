@@ -1,15 +1,18 @@
 %h1 Listing categories
 
-%table.table
+%span.lead= link_to 'New Category', new_category_path
+%br
+
+%table.table.table-striped.table-hover
   %tr
-    %th Name
-    %th
-    %th
-    %th
+    %th.col-lg-9.col-md-9.col-sm-9.col-xs-6.text-center Name
+    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
+    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
+    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
 
   - categories.each do |category|
     %tr
-      %td= category.name
+      %td.text-center= category.name
       %td= link_to 'Show', category
 
       %td
@@ -26,4 +29,6 @@
 
 %br
 
-= link_to 'New Category', new_category_path
+%span.lead= link_to 'New Category', new_category_path
+
+
