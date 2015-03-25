@@ -1,6 +1,7 @@
 %h1 Listing categories
 
-%span.lead= link_to 'New Category', new_category_path
+- if !current_user.nil? && current_user.admin?
+  %span.lead= link_to 'New Category', new_category_path
 %br
 
 %table.table.table-striped.table-hover
@@ -29,6 +30,7 @@
 
 %br
 
-%span.lead= link_to 'New Category', new_category_path
+- if !current_user.nil? && current_user.admin?
+  %span.lead= link_to 'New Category', new_category_path
 
 

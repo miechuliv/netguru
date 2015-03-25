@@ -1,6 +1,6 @@
 .container.cat-form-div
-  %p#notice= notice
-  %p#error= flash[:error]
+  %p#notice.lead.text-success= notice
+  %p#error.lead.text-danger= flash[:error]
 
   %table.table
     %tr
@@ -18,11 +18,15 @@
       %td.col-md-11.text-center= product.category.name
 
   %h3 Reviews
-  = render 'reviews/form'
-
   = render reviews
 
-  - if !current_user.nil? && current_user == product.user
-    = link_to 'Edit', edit_category_product_path(category.id, product.id)
-  \|
-  = link_to 'Back', category_products_path, class: 'btn btn-primary'
+  = render 'reviews/form'
+
+
+
+  .row.add-buttons
+    .cold-md-12
+      - if !current_user.nil? && current_user == product.user
+        = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
+
+        = link_to 'Back', category_products_path, class: 'btn btn-default'

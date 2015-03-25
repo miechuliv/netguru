@@ -5,10 +5,11 @@
       %ul
         - review.errors.full_messages.each do |msg|
           %li= msg
-  .form-group
+  .form-group{:class => ("has-error" unless review.errors[:content].blank?)}
     = f.label :content
     = f.text_area :content, class: 'form-control'
-  .form-group
-    = f.input :rating, collection: 1..5, class: 'form-control'
+  .row
+    .col-lg-2.col-md-2.col-sm-2{:class => ("has-error" unless review.errors[:rating].blank?)}
+      = f.input :rating, collection: 1..5, class: 'form-control'
 
-  = f.submit 'Save', class: 'btn btn-default'
+  = f.submit 'Save', class: 'btn btn-primary'

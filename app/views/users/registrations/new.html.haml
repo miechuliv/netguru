@@ -1,12 +1,33 @@
-%h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :firstname, required: true
-    = f.input :lastname, required: true
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
-  .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
+.container.container.cat-form-div
+  %h2 Sign up
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    - if resource.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(resource.errors.count, "error")} prohibited You from being registered:"
+        %ul
+          - resource.errors.full_messages.each do |msg|
+            %li.text-danger= msg
+    .form-group{:class => ("has-error" unless resource.errors[:email].blank?)}
+      = f.label :email, :required => true
+      = f.text_field :email, class: 'form-control'
+    .form-group{:class => ("has-error" unless resource.errors[:firstname].blank?)}
+      = f.label :firstname, :required => true
+      = f.text_field :firstname, class: 'form-control'
+    .form-group{:class => ("has-error" unless resource.errors[:lastname].blank?)}
+      = f.label :lastname, :required => true
+      = f.text_field :lastname, class: 'form-control'
+    .form-group{:class => ("has-error" unless resource.errors[:password].blank?)}
+      = f.label :password, :required => true
+      = f.password_field :password, class: 'form-control'
+    .form-group{:class => ("has-error" unless resource.errors[:password_confirmation].blank?)}
+      = f.label :password_confirmation, :required => true
+      = f.password_field :password_confirmation, class: 'form-control'
+
+    .form-actions
+      = f.button :submit, "Sign up", :class => "btn btn-primary"
+
+  .row.add-buttons
+    .cold-md-12
+      = render "devise/shared/links"
+
+

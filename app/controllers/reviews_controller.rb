@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   expose(:review)
   expose(:product)
+  expose(:category)
 
 
 
@@ -9,6 +10,10 @@ class ReviewsController < ApplicationController
 
 
   def edit
+  end
+
+  def new
+
   end
 
   def create
@@ -20,10 +25,10 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      # I believe ther should be a redirect back to product on failure to add review
-       redirect_to category_product_url(product.category, product), notice: 'Failed to save review.'
+      # I believe there should be a redirect back to product on failure to add review
+      # redirect_to category_product_url(product.category, product), notice: 'Failed to save review.'
 
-      #render action: 'new'
+      render action: 'new'
     end
   end
 

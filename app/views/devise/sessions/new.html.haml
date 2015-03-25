@@ -1,9 +1,19 @@
-%h2 Sign in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email, required: false, autofocus: true
-    = f.input :password, required: false
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Sign in"
-= render "devise/shared/links"
+.container.cat-form-div
+  %h2 Sign in
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    -unless flash[:alert].blank?
+      .lead.text-danger= flash[:alert]
+    .form-group{:class => ("has-error" unless flash[:alert].blank?)}
+      = f.label :email, :required => true
+      = f.text_field :email, :required => true, class: 'form-control'
+    .form-group{:class => ("has-error" unless flash[:alert].blank?)}
+      = f.label :password, :required => true
+      = f.password_field :password, :required => true, class: 'form-control'
+
+
+    .form-actions
+      = f.button :submit, "Sign in", class: 'btn btn-primary mrg-top'
+  .row.add-buttons
+    .cold-md-12
+      = render "devise/shared/links"
+

@@ -1,0 +1,9 @@
+.container.cat-form-div
+  %h1 New review
+
+  = render 'form'
+
+  .row.add-buttons
+    .col-md-12
+
+      = link_to 'Back', category_product_path(product.category, product),  class: 'btn btn-primary'
