@@ -57,7 +57,9 @@ $standard-border: solid 1px $gray-lighter;
   margin-top: 10px;
 }
 
-
+.btm-bord {
+  border-bottom:$standard-border;
+}
 /* columns of same height styles */
 /*.row-same-height {
   display: table;

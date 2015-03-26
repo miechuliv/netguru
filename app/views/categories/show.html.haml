@@ -7,9 +7,14 @@
       %span.lead= category.name
 
 
-  %p
+  %table.table.mrg-top
+    %thead
+      %tr
+        %td.lead Category products:
     - category.products.each do |product|
-      = product.title
+      %tr
+        %td
+          = product.title
 
   - if !current_user.nil? && current_user.admin?
     %p

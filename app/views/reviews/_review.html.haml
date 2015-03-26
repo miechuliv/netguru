@@ -1,6 +1,9 @@
-%p= review.content
-%p
-  %b
-    - 1.upto(review.rating) do |i|
-      ☆
-  %em= review.author
+.row.btm-bord
+  .col-md-4.col-sm-6.col-xs-12
+    %p
+      %b
+        - 1.upto(review.rating) do |i|
+          ☆
+        %em= review.author
+    %p= review.content
+
