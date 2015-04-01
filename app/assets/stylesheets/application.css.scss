@@ -60,6 +60,10 @@ $standard-border: solid 1px $gray-lighter;
 .btm-bord {
   border-bottom:$standard-border;
 }
+
+.mrg-left {
+  margin-left: 15px;
+}
 /* columns of same height styles */
 /*.row-same-height {
   display: table;

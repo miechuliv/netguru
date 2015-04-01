@@ -4,6 +4,10 @@
       %b
         - 1.upto(review.rating) do |i|
           ☆
-        %em= review.author
+        - if defined? review.author
+          %em= review.author
+        - else
+          %em= review.product.title
+          %em= review.created_at.strftime("%d-%m-%y")
     %p= review.content
 

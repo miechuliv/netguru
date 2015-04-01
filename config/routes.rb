@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
       registrations: "users/registrations"
   }
+
+  get '/profile/:id' , to: 'users#show', as: 'user_profile'
 end

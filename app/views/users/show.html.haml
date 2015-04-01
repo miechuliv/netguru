@@ -1,0 +1,26 @@
+.container.cat-form-div
+  .row
+
+
+    .col-md-6.col-sm-12.col-xs-12
+      %h2.mrg-left
+
+        %span= "Users profile: "
+        %span= user.firstname + " " + user.lastname
+      %table.table
+        %tr
+          %td= "Email: "
+          %td= mail_to user.email
+        %tr
+          %td= "Joined at: "
+          %td= user.created_at.strftime("%Y-%m-%d")
+        %tr
+          %td= "Last time logged in: "
+          %td= user.last_sign_in_at.strftime("%Y-%m-%d")
+      %table.table
+
+
+    .col-md-6.col-sm-12.col-xs-12
+      %h2= "Latest user reviews:"
+      - @reviews.each do |review|
+        .col-md-12= render template: "reviews/_review", locals: {review: review}
