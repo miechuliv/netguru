@@ -1,36 +1,36 @@
-%h1 Listing categories
+.container.cat-form-div
 
-- if !current_user.nil? && current_user.admin?
-  %span.lead= link_to 'New Category', new_category_path
-%br
+  %h1 Listing categories
 
-%table.table.table-striped.table-hover
-  %tr
-    %th.col-lg-9.col-md-9.col-sm-9.col-xs-6.text-center Name
-    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
-    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
-    %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
+  - if !current_user.nil? && current_user.admin?
+    %span.lead= link_to 'New Category', new_category_path, class: 'btn btn-primary mgr-btm-15'
 
-  - categories.each do |category|
+
+  %table.table.table-striped.table-hover
     %tr
-      %td.text-center= category.name
-      %td= link_to 'Show', category
+      %th.col-lg-9.col-md-9.col-sm-9.col-xs-6.text-center Name
+      %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
+      %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
+      %th.col-lg-1.col-md-1.col-sm-1.col-xs-2
 
-      %td
-        - if !current_user.nil? && current_user.admin?
-          = link_to 'Edit', edit_category_path(category)
-        - else
-          = ''
+    - categories.each do |category|
+      %tr
+        %td.text-center= category.name
+        %td= link_to 'Show', category
 
-      %td
-        - if !current_user.nil? && current_user.admin?
-          = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-        - else
-          = ''
+        %td
+          - if !current_user.nil? && current_user.admin?
+            = link_to 'Edit', edit_category_path(category)
+          - else
+            = ''
 
-%br
+        %td
+          - if !current_user.nil? && current_user.admin?
+            = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+          - else
+            = ''
 
-- if !current_user.nil? && current_user.admin?
-  %span.lead= link_to 'New Category', new_category_path
+
+
 
 
