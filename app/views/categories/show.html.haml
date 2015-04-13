@@ -1,5 +1,5 @@
 .container.cat-form-div
-  %p#notice.lead.text-success= notice
+  %p#notice.lead.text-success.text-center= notice
 
   .row.bottom-separation
     .col-md-4
@@ -14,7 +14,7 @@
     - category.products.each do |product|
       %tr
         %td
-          = product.title
+          = link_to product.title, category_product_path(category,product)
 
   - if !current_user.nil? && current_user.admin?
     %p
@@ -24,6 +24,5 @@
   .row.add-buttons
     .col-md-12
     - if !current_user.nil? && current_user.admin?
-      = link_to 'Edit', edit_category_path(category)
-    \|
+      = link_to 'Edit', edit_category_path(category), class: 'btn btn-default'
     = link_to 'Back', categories_path, class: 'btn btn-primary'

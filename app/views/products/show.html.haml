@@ -20,13 +20,15 @@
   %h3 Reviews
   = render reviews
 
-  = render 'reviews/form'
+
+  - if !current_user.nil? && current_user.admin?
+    = render 'reviews/form'
 
 
 
   .row.add-buttons
     .col-md-12
-      - if !current_user.nil? && current_user == product.user
-        = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
+    - if !current_user.nil? && current_user == product.user
+      = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-default'
 
-        = link_to 'Back', category_path(category), class: 'btn btn-default'
+      = link_to 'Back', category_path(category), class: 'btn btn-default'
